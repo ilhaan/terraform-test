@@ -7,6 +7,7 @@ provider "aws" {
 resource "aws_instance" "example" {
   ami           = "ami-03fa1f014b48fa6bd"
   instance_type = "t2.micro"
+  key_name        = "${var.keypair_name}"
 }
 
 # Elastic IP for the above mentioned EC2 instance 
