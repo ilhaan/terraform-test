@@ -8,6 +8,7 @@ Followed getting started guide [here](https://learn.hashicorp.com/terraform/gett
 keypair_name="<keypair-name-without-extension>"
 ```
 The keypair above can be stored in `~/.ssh/`. 
+
 2. Run `terraform apply` to deploy instance 
 
 ## Reference 
