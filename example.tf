@@ -9,8 +9,3 @@ resource "aws_instance" "example" {
   instance_type = "t2.micro"
   key_name        = "${var.keypair_name}"
 }
-
-# Elastic IP for the above mentioned EC2 instance 
-resource "aws_eip" "ip" {
-  instance = "${aws_instance.example.id}"
-}
