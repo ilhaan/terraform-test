@@ -1,6 +1,6 @@
 # Define provider and region. Credentials are accessed from awscli default location. 
 provider "aws" {
-  region     = "us-west-2"
+  region     = "${var.region}"
 }
 
 # The EC2 instance to be launched 
