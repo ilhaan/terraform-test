@@ -1,6 +1,7 @@
 # terraform-test
-Ilhaan plays around with Terraform 
-Followed getting started guide [here](https://learn.hashicorp.com/terraform/getting-started/)
+Ilhaan plays around with Terraform. Followed getting started guide [here](https://learn.hashicorp.com/terraform/getting-started/). 
+
+This repo can be used to spin up an EC2 instance that only allows SSH inbound connections via port 22. 
 
 ## Instructions
 This repo assumes that AWS configuration and credential files are managed by [`awscli`](https://aws.amazon.com/cli/) based on [this](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html). 
