@@ -3,16 +3,23 @@ provider "aws" {
   region     = "${var.region}"
 }
 
-# Security group that allows only port 22 (SSH) for inbound and nothing for outbound 
+# Security group that allows only port 22 (SSH) for inbound and everything for outbound 
 resource "aws_security_group" "ssh" {
   name = "allow-ssh"
-  description = "Security group that allows SSH from internet"
+  description = "Security group that allows inbound SSH from internet and all outbound connections"
 
   ingress {
     from_port = 22
     to_port   = 22
     protocol  = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
+  }
+
+	egress {
+    from_port       = 0
+    to_port         = 0
+    protocol        = "-1"
+    cidr_blocks     = ["0.0.0.0/0"]
   }
 
   tags {
