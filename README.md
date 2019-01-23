@@ -8,7 +8,7 @@ This repo assumes that AWS configuration and credential files are managed by [`a
 
 Once your AWS credentials are set up, follow the instructions below: 
 
-1. Create `terraform.tfvars` in this directory and add the following line: 
+1. Clone this repo and `cd` into the `ec2_instance` directory. Create `terraform.tfvars` in this directory and add the following line: 
 ```
 keypair_name="<keypair-name-without-extension>"
 ```
