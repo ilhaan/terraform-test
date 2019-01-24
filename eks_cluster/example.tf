@@ -1,3 +1,4 @@
+# ============================ VPC Resources ===================================
 # This data source is included for ease of sample architecture deployment
 # and can be swapped out as necessary.
 data "aws_availability_zones" "available" {}
@@ -51,6 +52,8 @@ resource "aws_route_table_association" "demo" {
   subnet_id      = "${aws_subnet.demo.*.id[count.index]}"
   route_table_id = "${aws_route_table.demo.id}"
 }
+
+# ============================ IAM Roles & Policies ===========================
 
 resource "aws_iam_role" "demo-cluster" {
   name = "terraform-eks-demo-cluster"
