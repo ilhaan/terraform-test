@@ -1,6 +1,8 @@
 #variable "access_key" {}
 #variable "secret_key" {}
-# Above values are handled by awscli 
+# Above values are handled by awscli
+
+# Infrastructure variables
 
 variable "region" {
   default = "us-west-2"
@@ -12,5 +14,22 @@ variable "keypair_name" {
 
 variable "cluster-name" {
   default = "ilhaan-terraform-eks-demo"
+  type    = "string"
+}
+
+# Kubernetes Service variables
+
+variable "namespace_name" {
+  default = "demo-service"
+  type    = "string"
+}
+
+variable "nginx_pod_name" {
+  default = "nginxpod"
+  type    = "string"
+}
+
+variable "nginx_pod_image" {
+  default = "nginx:latest"
   type    = "string"
 }
