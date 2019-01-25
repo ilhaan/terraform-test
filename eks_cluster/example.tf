@@ -83,3 +83,37 @@ resource "aws_iam_role_policy_attachment" "demo-cluster-AmazonEKSServicePolicy" 
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
   role       = "${aws_iam_role.demo-cluster.name}"
 }
+
+# ===================== EKS Master Cluster Security Group =====================
+
+resource "aws_security_group" "demo-cluster" {
+  name        = "terraform-eks-demo-cluster"
+  description = "Cluster communication with worker nodes"
+  vpc_id      = "${aws_vpc.demo.id}"
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags {
+    Name = "terraform-eks-demo"
+  }
+}
+
+# Get external IP to restrict ingress access 
+data "external" "getexternalip" {
+  program = ["sh", "test.sh" ]
+}
+
+resource "aws_security_group_rule" "demo-cluster-ingress-workstation-https" {
+  cidr_blocks       = ["${chomp(data.external.getexternalip.result)}/32"]
+  description       = "Allow workstation to communicate with the cluster API Server"
+  from_port         = 443
+  protocol          = "tcp"
+  security_group_id = "${aws_security_group.demo-cluster.id}"
+  to_port           = 443
+  type              = "ingress"
+}
