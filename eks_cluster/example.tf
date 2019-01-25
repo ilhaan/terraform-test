@@ -103,7 +103,7 @@ resource "aws_security_group" "demo-cluster" {
   }
 }
 
-# Get external IP to restrict ingress access 
+# Get external IP to restrict ingress access
 data "external" "getexternalip" {
   program = ["sh", "test.sh" ]
 }
@@ -230,4 +230,16 @@ resource "aws_security_group_rule" "demo-cluster-ingress-node-https" {
   source_security_group_id = "${aws_security_group.demo-node.id}"
   to_port                  = 443
   type                     = "ingress"
+}
+
+# =============== Worker Node AutoScaling Group ===============================
+
+data "aws_ami" "eks-worker" {
+  filter {
+    name   = "name"
+    values = ["amazon-eks-node-v*"]
+  }
+
+  most_recent = true
+  owners      = ["602401143452"] # Amazon EKS AMI Account ID
 }
