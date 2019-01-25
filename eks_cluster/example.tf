@@ -104,12 +104,12 @@ resource "aws_security_group" "demo-cluster" {
 }
 
 # Get external IP to restrict ingress access
-data "external" "getexternalip" {
-  program = ["sh", "get-external-ip.sh" ]
+data "http" "getexternalip" {
+  url = "http://ipv4.icanhazip.com"
 }
 
 resource "aws_security_group_rule" "demo-cluster-ingress-workstation-https" {
-  cidr_blocks       = ["${chomp(data.external.getexternalip.result)}/32"]
+  cidr_blocks       = ["${chomp(data.http.getexternalip.body)}/32"]
   description       = "Allow workstation to communicate with the cluster API Server"
   from_port         = 443
   protocol          = "tcp"
