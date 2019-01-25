@@ -105,7 +105,7 @@ resource "aws_security_group" "demo-cluster" {
 
 # Get external IP to restrict ingress access
 data "external" "getexternalip" {
-  program = ["sh", "test.sh" ]
+  program = ["sh", "get-external-ip.sh" ]
 }
 
 resource "aws_security_group_rule" "demo-cluster-ingress-workstation-https" {
