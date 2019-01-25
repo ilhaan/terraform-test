@@ -7,3 +7,7 @@
 
 # .tfvars files
 *.tfvars
+
+# Config files 
+kubeconfig
+config-map-aws-auth.yaml
