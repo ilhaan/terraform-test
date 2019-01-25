@@ -1,6 +1,10 @@
 # ============================ VPC Resources ===================================
 # This data source is included for ease of sample architecture deployment
 # and can be swapped out as necessary.
+provider "aws" {
+  region     = "${var.region}"
+}
+
 data "aws_availability_zones" "available" {}
 
 resource "aws_vpc" "demo" {
