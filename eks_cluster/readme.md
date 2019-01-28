@@ -18,5 +18,6 @@ After running the above, k8s components (namespace, pod & service) will not be d
 1, k8s components should now be deployed 
 1. Deploy dashboard: ```kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml```
 1. Copy access token for dashboard to clipboard: ```aws-iam-authenticator token -i <ENTER-YOUR-CLUSTER-NAME> --token-only | pbcopy```
+1. Run: `kubectl proxy` (background this process if you'd like).  
 1. Navigate to http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/, select "Token" and paste to login. 
 1. Setup `helm` based on instructions [here](https://eksworkshop.com/helm_root/)
