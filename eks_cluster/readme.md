@@ -31,6 +31,3 @@ After running the above, k8s components (namespace, pod & service) will not be d
   * Inspect deployment object: `kubectl describe deployment mywebserver-nginx`
   * Verify pod deployment: `kubectl get pods -l app=mywebserver-nginx`
   * Get external IP for service: `kubectl get service mywebserver-nginx -o wide`
-1. Run: `kubectl proxy` (background this process if you'd like).  
-1. Navigate to http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/, select "Token" and paste to login. 
-1. Setup `helm` based on instructions [here](https://eksworkshop.com/helm_root/)
