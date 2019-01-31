@@ -1,6 +1,8 @@
 # terraform-test
 Ilhaan plays around with Terraform. Followed getting started guide [here](https://learn.hashicorp.com/terraform/getting-started/build). 
 
+**Instructions below are outdated. Update coming soon!**
+
 This repo can be used to spin up an EC2 instance that only allows SSH inbound connections via port 22 and all outbound connections.  
 
 ## Instructions
