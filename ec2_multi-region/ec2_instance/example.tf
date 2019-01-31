@@ -29,8 +29,7 @@ resource "aws_security_group" "ssh" {
 
 # The EC2 instance to be launched 
 resource "aws_instance" "example" {
-  ami                    = "ami-03fa1f014b48fa6bd"
+  ami                    = "${lookup(var.amis, var.region)}"
   instance_type          = "t2.micro"
-  key_name               = "${var.keypair_name}"
   vpc_security_group_ids = ["${aws_security_group.ssh.id}"]
 }
